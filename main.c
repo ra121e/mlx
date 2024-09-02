@@ -25,6 +25,9 @@ int main(void)
 	int		y;
 	int		xpm_x;
 	int		xpm_y;
+	int		i;
+	int		j;
+
 
 
 	mlx = mlx_init();
@@ -39,11 +42,18 @@ int main(void)
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
 
-	x = 54;
-	y = 87;
-
-	offset = y * line_size + (x * bits_per_pixel);
-	*(int *)(addr + offset) = 0x00FF0000;
+	x = 10;
+	while (x < 20)
+	{
+		y = 10;
+		while (y < 50)
+		{
+			offset = y * line_size + (x * bits_per_pixel / 8);
+			*(int *)(addr + offset) = 0x00FF0000;
+			y++;
+		}
+		x++;
+	}
 
 	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
 
