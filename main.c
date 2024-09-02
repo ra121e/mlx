@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <stdlib.h>
+#include <math.h>
 #include "mlx.h"
 
 int event_handler(int key, void *mlx)
@@ -42,16 +44,12 @@ int main(void)
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
 
-	x = 10;
-	while (x < 20)
+	x = 0;
+	while (x < 1000)
 	{
-		y = 10;
-		while (y < 50)
-		{
-			offset = y * line_size + (x * bits_per_pixel / 8);
-			*(int *)(addr + offset) = 0x00FF0000;
-			y++;
-		}
+		y = sqrt(500000 - pow(x, 2));
+		offset = y * line_size + (x * bits_per_pixel / 8);
+		*(int *)(addr + offset) = 0x00FF0000;
 		x++;
 	}
 
