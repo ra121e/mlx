@@ -45,11 +45,18 @@ int main(void)
 	printf("endian: %d\n", endian);
 
 	x = 0;
-	while (x < 1000)
+	while (x < 500)
 	{
-		y = sqrt(500000 - pow(x, 2));
-		offset = y * line_size + (x * bits_per_pixel / 8);
-		*(int *)(addr + offset) = 0x00FF0000;
+		y = 0;
+		while (y < 200)
+		{
+			if((y <= sqrt(10000 - pow((x - 100), 2)) + 100) && (y >= sqrt(10000 - pow((x - 100), 2)) * -1 + 100))
+			{
+				offset = y * line_size + (x * bits_per_pixel / 8);
+				*(int *)(addr + offset) = 0x00FF0000;
+			}
+			y++;
+		}
 		x++;
 	}
 
