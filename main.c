@@ -23,21 +23,27 @@ int main(void)
 	int		offset;
 	int		x;
 	int		y;
+	int		xpm_x;
+	int		xpm_y;
 
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World");
-	img = mlx_new_image(mlx, 1920, 1080);
+
+	img = mlx_xpm_file_to_image(mlx, "./minilibx-linux/test/unknowns.xpm", &xpm_x, &xpm_y);
+	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
+
+	//img = mlx_new_image(mlx, 1920, 1080);
 	addr = mlx_get_data_addr(img, &bits_per_pixel, &line_size, &endian);
 	printf("bytes per pixel: %d\n", bits_per_pixel);
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
 
-	x = 54; 
+	x = 54;
 	y = 87;
 
 	offset = y * line_size + (x * bits_per_pixel);
-	*(int *)(addr + offset) = 0x000000FF;
+	*(int *)(addr + offset) = 0x00FF0000;
 
 	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
 
