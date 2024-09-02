@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
-#include "./minilibx-linux/mlx.h"
+#include "mlx.h"
 
 int event_handler(int key, void *mlx)
 {
