@@ -1,33 +1,17 @@
-#include <stdio.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <stdlib.h>
-#include <math.h>
-#include "mlx.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
+/*   Updated: 2024/09/03 20:26:04 by athonda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-int	mandelbrot(double cx, double cy)
-{
-	int		n;
-	double	tmp_r;
-	double	tmp_i;
-	double	zr;
-	double	zi;
-
-	zr = 0.0;
-	zi = 0.0;
-	n = 0;
-	while (n < 100 && (zr * zr + zi * zi) < 4)
-	{
-		tmp_r = zr * zr - zi * zi + cx;
-		tmp_i = 2 * zr * zi + cy;
-		zr = tmp_r;
-		zi = tmp_i;
-		n++;
-	}
-
-	return (n);
-}
 int event_handler(int key, void *mlx)
 {
  (void)key;
@@ -40,7 +24,9 @@ int main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*win;
 	void	*img;
+	void	*img_file;
 	int		bits_per_pixel;
 	int		line_size;
 	int		endian;
@@ -60,11 +46,10 @@ int main(void)
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World");
 
-	img = mlx_xpm_file_to_image(mlx, "./minilibx-linux/test/unknowns.xpm", &xpm_x, &xpm_y);
-	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
+	img_file = mlx_xpm_file_to_image(mlx, "./minilibx-linux/test/unknowns.xpm", &xpm_x, &xpm_y);
+	mlx_put_image_to_window(mlx, mlx_win, img_file, 0, 0);
 
-	//img = mlx_new_image(mlx, 1920, 1080);
-	addr = mlx_get_data_addr(img, &bits_per_pixel, &line_size, &endian);
+	addr = mlx_get_data_addr(img_file, &bits_per_pixel, &line_size, &endian);
 	printf("bytes per pixel: %d\n", bits_per_pixel);
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
@@ -72,10 +57,10 @@ int main(void)
 	printf("xpm_y: %d\n", xpm_y);
 
 	x = 0;
-	while (x < 500)
+	while (x < 300)
 	{
 		y = 0;
-		while (y < 200)
+		while (y < 300)
 		{
 			if((y <= sqrt(10000 - pow((x - 100), 2)) + 100) && (y >= sqrt(10000 - pow((x - 100), 2)) * -1 + 100))
 			{
@@ -86,9 +71,16 @@ int main(void)
 		}
 		x++;
 	}
+	mlx_put_image_to_window(mlx, mlx_win, img_file, 0, 0);
 
-	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
-
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Fractol");
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	addr = mlx_get_data_addr(img, &bits_per_pixel, &line_size, &endian);
+	printf("bytes per pixel: %d\n", bits_per_pixel);
+	printf("line size: %d\n", line_size);
+	printf("endian: %d\n", endian);
+	printf("xpm_x: %d\n", xpm_x);
+	printf("xpm_y: %d\n", xpm_y);
 	x = 0;
 	while (x < WIDTH)
 	{
@@ -111,8 +103,8 @@ int main(void)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
 
-	mlx_hook(mlx_win, KeyPress, KeyPressMask, event_handler, mlx);
+	mlx_hook(win, KeyPress, KeyPressMask, event_handler, mlx);
 	mlx_loop(mlx);
 }
