@@ -4,7 +4,26 @@
 #include <stdlib.h>
 #include <math.h>
 #include "mlx.h"
+#include "fractol.h"
 
+int	mandelbrot(double cx, double cy)
+{
+	int		n;
+	double	tmp_r;
+	double	tmp_i;
+
+	n = 0;
+	while (n < 100 && (cx * cx + cy * cy) < 4)
+	{
+		tmp_r = cx * cx - cy * cy + cx;
+		tmp_i = 2 * cx * cy + cy;
+		cx = tmp_r;
+		cy = tmp_i;
+		n++;
+	}
+
+	return (n);
+}
 int event_handler(int key, void *mlx)
 {
  (void)key;
@@ -29,6 +48,8 @@ int main(void)
 	int		xpm_y;
 	int		i;
 	int		j;
+	double	cx;
+	double	cy;
 
 
 
@@ -43,6 +64,8 @@ int main(void)
 	printf("bytes per pixel: %d\n", bits_per_pixel);
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
+	printf("xpm_x: %d\n", xpm_x);
+	printf("xpm_y: %d\n", xpm_y);
 
 	x = 0;
 	while (x < 500)
@@ -62,6 +85,30 @@ int main(void)
 
 	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
 
-	// mlx_hook(mlx_win, KeyPress, KeyPressMask, event_handler, mlx);
-	 mlx_loop(mlx);
+	x = 0;
+	while (x < WIDTH)
+	{
+		y = 0;
+		while (y < HEIGHT)
+		{
+			cx = (x - WIDTH / 2.0) * 4.0 / WIDTH;
+			cy = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
+			if (mandelbrot(cx, cy) == 100)
+			{
+				offset = y * line_size + (x * bits_per_pixel / 8);
+				*(int *)(addr + offset) = 0x00FF0000;
+			}
+			else
+			{
+				offset = y * line_size + (x * bits_per_pixel / 8);
+				*(int *)(addr + offset) = 0x00000000;
+			}
+			y++;
+		}
+		x++;
+	}
+	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
+
+	mlx_hook(mlx_win, KeyPress, KeyPressMask, event_handler, mlx);
+	mlx_loop(mlx);
 }
