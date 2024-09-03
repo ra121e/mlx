@@ -11,14 +11,18 @@ int	mandelbrot(double cx, double cy)
 	int		n;
 	double	tmp_r;
 	double	tmp_i;
+	double	zr;
+	double	zi;
 
+	zr = 0.0;
+	zi = 0.0;
 	n = 0;
-	while (n < 100 && (cx * cx + cy * cy) < 4)
+	while (n < 100 && (zr * zr + zi * zi) < 4)
 	{
-		tmp_r = cx * cx - cy * cy + cx;
-		tmp_i = 2 * cx * cy + cy;
-		cx = tmp_r;
-		cy = tmp_i;
+		tmp_r = zr * zr - zi * zi + cx;
+		tmp_i = 2 * zr * zi + cy;
+		zr = tmp_r;
+		zi = tmp_i;
 		n++;
 	}
 
