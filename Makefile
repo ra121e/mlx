@@ -6,13 +6,13 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 19:45:09 by athonda           #+#    #+#              #
-#    Updated: 2024/09/04 12:18:12 by athonda          ###   ########.fr        #
+#    Updated: 2024/09/04 12:33:59 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
-SRCS	=	main.c mandelbrot.c
+SRCS	=	main.c mandelbrot.c event.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 

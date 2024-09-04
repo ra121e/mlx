@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/03 20:26:04 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/04 13:09:18 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int main(void)
 	int		y;
 	int		xpm_x;
 	int		xpm_y;
-	int		i;
-	int		j;
 	double	cx;
 	double	cy;
 
@@ -87,8 +85,8 @@ int main(void)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			cx = (x - WIDTH / 2.0) * 4.0 / WIDTH;
-			cy = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
+			cx = (x - (WIDTH * 2.0 / 3.0)) * 4.0 / WIDTH;
+			cy = (y - HEIGHT / 2.0) * 4.0 / WIDTH;
 			if (mandelbrot(cx, cy) == 100)
 			{
 				offset = y * line_size + (x * bits_per_pixel / 8);
@@ -104,6 +102,7 @@ int main(void)
 		x++;
 	}
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	mlx_mouse_hook(win,mouse_zoom,0);
 
 	mlx_hook(win, KeyPress, KeyPressMask, event_handler, mlx);
 	mlx_loop(mlx);
