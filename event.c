@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/04 12:51:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/04 21:14:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,36 @@ int	key_win3(int key,void *p)
 }
 */
 
-int	mouse_zoom(int button,int x,int y, void *p)
+int	mouse_zoom(int button,int x,int y, t_box *p)
 {
-  printf("Mouse in Win1, button %d at %dx%d. p-value:%p\n",button,x,y,p);
-  return (0);
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_size;
+	int		endian;
+	double	scale_factor;
+
+	printf("Mouse in Win1, button %d at %dx%d. p-value:%p\n",button,x,y,p);
+	if (button == 4)
+	{
+		scale_factor = 0.9 * p->scale_factor;
+		mlx_destroy_image(p->mlx, p->img);
+		mlx_clear_window(p->mlx, p->win);
+		p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
+		addr = mlx_get_data_addr(p->img, &bits_per_pixel, &line_size, &endian);
+		draw(addr, bits_per_pixel, line_size, scale_factor);
+		mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
+		p->scale_factor = scale_factor;
+	}
+	if (button == 5)
+	{
+		scale_factor = 1.1 * p->scale_factor;
+		mlx_destroy_image(p->mlx, p->img);
+		mlx_clear_window(p->mlx, p->win);
+		p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
+		addr = mlx_get_data_addr(p->img, &bits_per_pixel, &line_size, &endian);
+		draw(addr, bits_per_pixel, line_size, scale_factor);
+		mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
+		p->scale_factor = scale_factor;
+	}
+	return (0);
 }
