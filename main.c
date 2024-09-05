@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/04 21:09:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/05 13:26:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int event_handler(int key, void *mlx)
  return (0);
 }
 
-void	draw(char *addr, int bits_per_pixel, int line_size, double scale_factor)
+void	draw(t_box *box, double scale_factor)
 {
 	int		x;
 	int		y;
@@ -34,17 +34,17 @@ void	draw(char *addr, int bits_per_pixel, int line_size, double scale_factor)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			cx = (x - (WIDTH * 2.0 / 3.0)) * (scale_factor * 4.0 / WIDTH);
-			cy = (y - HEIGHT / 2.0) * (scale_factor * 4.0 / WIDTH);
+			cx = (x - box->orig_x) * (scale_factor * 4.0 / WIDTH);
+			cy = (y - box->orig_y) * (scale_factor * 4.0 / WIDTH);
 			if (mandelbrot(cx, cy) == 100)
 			{
-				offset = y * line_size + (x * bits_per_pixel / 8);
-				*(int *)(addr + offset) = 0x00FF0000;
+				offset = y * box->line_size + (x * box->bits_per_pixel / 8);
+				*(int *)(box->addr + offset) = 0x00FF0000;
 			}
 			else
 			{
-				offset = y * line_size + (x * bits_per_pixel / 8);
-				*(int *)(addr + offset) = 0x00000000;
+				offset = y * box->line_size + (x * box->bits_per_pixel / 8);
+				*(int *)(box->addr + offset) = 0x00000000;
 			}
 			y++;
 		}
@@ -81,9 +81,15 @@ int main(void)
 	printf("bytes per pixel: %d\n", bits_per_pixel);
 	printf("line size: %d\n", line_size);
 	printf("endian: %d\n", endian);
+	box->addr = addr;
+	box->bits_per_pixel = bits_per_pixel;
+	box->line_size = line_size;
+	box->endian = endian;
 	scale_factor = 1.0;
-	draw(addr, bits_per_pixel, line_size, scale_factor);
 	box->scale_factor = 1.0;
+	box->orig_x = WIDTH * 2.0 / 3.0;
+	box->orig_y = HEIGHT / 2.0;
+	draw(box, scale_factor);
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
 	mlx_mouse_hook(win, mouse_zoom, box);
 
