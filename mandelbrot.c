@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:52:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/03 19:53:45 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/07 19:12:22 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	mandelbrot(double cx, double cy)
 	zr = 0.0;
 	zi = 0.0;
 	n = 0;
-	while (n < 100 && (zr * zr + zi * zi) < 4)
+	while (n < ITER_MAX && (zr * zr + zi * zi) < 4)
 	{
 		tmp_r = zr * zr - zi * zi + cx;
 		tmp_i = 2 * zr * zi + cy;
