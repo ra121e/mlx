@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 19:45:09 by athonda           #+#    #+#              #
-#    Updated: 2024/09/05 16:08:39 by athonda          ###   ########.fr        #
+#    Updated: 2024/09/08 00:02:39 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	=	main.c mandelbrot.c event.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
-CFLAGS	=	-Wall -Wextra -Werror -O2
+CFLAGS	=	-Wall -Wextra -Werror -O2 -g3
 
 XFLAGS	=	-lXext -lX11 -lm
 

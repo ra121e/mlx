@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/07 19:11:28 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/08 08:36:04 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define ITER_MAX 100
+# define ITER_MAX 1000
+# define ITER_UNIT 30
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -39,9 +40,17 @@ struct s_box
 	double	orig_y;
 	int		x;
 	int		y;
+	double	cx;
+	double	cy;
+	int		iter;
+	int		div[WIDTH][HEIGHT];
+	double	zr[WIDTH][HEIGHT];
+	double	zi[WIDTH][HEIGHT];
+	int		trigger;
 };
 
 void	draw(t_box *box);
 int		mouse_zoom(int button,int x,int y, t_box *p);
-int		mandelbrot(double cx, double cy);
+int		loop_hook(t_box *p);
+int		mandelbrot(t_box *f);
 #endif //FRACTOL_H
