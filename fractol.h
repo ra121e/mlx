@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/08 08:36:04 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/10 09:28:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define ITER_MAX 1000
-# define ITER_UNIT 30
+# define ITER_UNIT 50
+# define ZOOM_IN_FACTOR 0.7
+# define ZOOM_OUT_FACTOR 1.3
+# define JULIA_CX -0.17
+# define JULIA_CY 0.66
 # include <stdio.h>
+# include <unistd.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
@@ -35,6 +40,7 @@ struct s_box
 	int		bits_per_pixel;
 	int		line_size;
 	int		endian;
+	char	set;
 	double	scale_factor;
 	double	orig_x;
 	double	orig_y;
@@ -49,8 +55,23 @@ struct s_box
 	int		trigger;
 };
 
-void	draw(t_box *box);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	init_var(t_box *p);
+void	init(t_box *p);
+void	error_arg(void);
+void	error_julia(void);
+void	error_fractal(void);
+int		check_arg(int ac, char *av[], t_box *p);
+void	set_fractal(t_box *p, char *av[]);
+void	init(t_box *p);
+void	init_var(t_box *p);
+void	init_again(t_box *p);
+double	fractal(t_box *p);
+void	draw(t_box *p);
 int		mouse_zoom(int button,int x,int y, t_box *p);
+int		key_esc(int key, t_box *p);
 int		loop_hook(t_box *p);
-int		mandelbrot(t_box *f);
+int		mandelbrot(t_box *p);
+int		julia(t_box *p);
 #endif //FRACTOL_H

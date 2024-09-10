@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 19:52:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 07:40:51 by athonda          ###   ########.fr       */
+/*   Created: 2024/09/09 14:50:25 by athonda           #+#    #+#             */
+/*   Updated: 2024/09/10 07:55:11 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mandelbrot(t_box *p)
+int	julia(t_box *p)
 {
 	int		n;
 	double	tmp_r;
@@ -23,10 +23,15 @@ int	mandelbrot(t_box *p)
 	zr = p->zr[p->x][p->y];
 	zi = p->zi[p->x][p->y];
 	n = p->iter;
+	if (n == 0)
+	{
+		zr = p->cx;
+		zi = p->cy;
+	}
 	while ((zr * zr + zi * zi) < 4 && n < p->iter + ITER_UNIT)
 	{
-		tmp_r = zr * zr - zi * zi + p->cx;
-		tmp_i = 2 * zr * zi + p->cy;
+		tmp_r = zr * zr - zi * zi + JULIA_CX;
+		tmp_i = 2 * zr * zi + JULIA_CY;
 		zr = tmp_r;
 		zi = tmp_i;
 		n++;
