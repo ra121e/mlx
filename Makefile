@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 19:45:09 by athonda           #+#    #+#              #
-#    Updated: 2024/09/11 14:28:24 by athonda          ###   ########.fr        #
+#    Updated: 2024/09/11 19:47:13 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,20 @@ LIBFT	=	$(LIBFT_DIR)/libft.a
 LIBMLX_DIR	=	minilibx-linux
 LIBMLX	=	$(LIBMLX_DIR)/libmlx.a
 
+MLX_URL	= https://github.com/42Paris/minilibx-linux.git
+
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(LIBMLX)
 	cc $(CFLAGS) $(OBJS) $(LIBMLX) $(LIBFT) $(XFLAGS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+$(LIBMLX):
+	rm -rf $(LIBMLX_DIR)
+	git clone $(MLX_URL)
+	$(MAKE) -C $(LIBMLX_DIR)
 
 %.o: %.c fractol.h
 	cc $(CFLAGS) $(IFLAGS) -c $< -o $@
