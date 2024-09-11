@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:54:21 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 09:27:51 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/11 14:15:23 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	init_var(t_box *p)
 	p->line_size = 0;
 	p->endian = 0;
 	p->set = '\0';
+	p->jx = JULIA_CX;
+	p->jy = JULIA_CY;
 	p->scale_factor = 0.0;
 	p->orig_x = 0.0;
 	p->orig_y = 0.0;

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:50:25 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 07:55:11 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/11 14:22:09 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	julia(t_box *p)
 	}
 	while ((zr * zr + zi * zi) < 4 && n < p->iter + ITER_UNIT)
 	{
-		tmp_r = zr * zr - zi * zi + JULIA_CX;
-		tmp_i = 2 * zr * zi + JULIA_CY;
+		tmp_r = zr * zr - zi * zi + p->jx;
+		tmp_i = 2 * zr * zi + p->jy;
 		zr = tmp_r;
 		zi = tmp_i;
 		n++;

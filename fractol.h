@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 19:16:57 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/11 14:29:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ struct s_box
 	int		line_size;
 	int		endian;
 	char	set;
+	double	jx;
+	double	jy;
 	double	scale_factor;
 	double	orig_x;
 	double	orig_y;
@@ -62,6 +64,10 @@ void	init(t_box *p);
 void	error_arg(void);
 void	error_julia(void);
 void	error_fractal(void);
+int		ft_isdigit(int c);
+int		ft_isspace(char c);
+int		ft_space_sign(char *str, int *sign);
+double	ft_atof(char *str);
 int		check_arg(int ac, char *av[], t_box *p);
 void	set_fractal(t_box *p, char *av[]);
 void	init(t_box *p);
