@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 08:24:21 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/11 09:52:06 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	main(int ac, char **av)
 	mlx_mouse_hook(p->win, mouse_zoom, p);
 	mlx_key_hook(p->win, key_esc, p);
 	mlx_loop_hook(p->mlx, loop_hook, p);
-
+	//mlx_hook(p->win, 17, 0, close_window, p);
+	//mlx_hook(p->win, 2, 1L << 0, key_esc, p);
 	mlx_loop(p->mlx);
 	return (0);
 }

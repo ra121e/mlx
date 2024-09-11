@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   finish.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:23:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/11 09:06:22 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/11 09:43:24 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	finish(t_box *p, int exit_code)
 		mlx_destroy_window(p->mlx, p->win);
 	if (p->mlx)
 	{
-		mlx_loop_end(p->mlx);
+	//	mlx_loop_end(p->mlx);
 		mlx_destroy_display(p->mlx);
 		free(p->mlx);
 		free(p);
