@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/10 09:28:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/10 19:16:57 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ void	set_fractal(t_box *p, char *av[]);
 void	init(t_box *p);
 void	init_var(t_box *p);
 void	init_again(t_box *p);
+void	finish(t_box *p, int exit_code);
 double	fractal(t_box *p);
 void	draw(t_box *p);
 int		mouse_zoom(int button,int x,int y, t_box *p);
 int		key_esc(int key, t_box *p);
+int		close_window(t_box *p);
 int		loop_hook(t_box *p);
 int		mandelbrot(t_box *p);
 int		julia(t_box *p);
