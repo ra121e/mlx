@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/11 09:46:20 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 19:05:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,41 +21,23 @@ int	close_window(t_box *p)
 
 int	key_esc(int key, t_box *p)
 {
-	int	x;
-	int	y;
-	//void	*tmp;
-
-	x = 0;
-	y = 0;
 	printf("Key in Win3 : %d\n",key);
 	if (key==0xFF1B)
 		finish(p, 1);
 	else if (key == 65361)
-	{
-		x = -10;
 		p->orig_x -= 10;
-	}
 	else if (key == 65363)
-	{
-		x = 10;
 		p->orig_x += 10;
-	}
 	else if (key == 65362)
-	{
-		y = 10;
 		p->orig_y -= 10;
-	}
 	else if (key == 65364)
-	{
-		y = -10;
 		p->orig_y += 10;
-	}
+	init_again(p);
 	printf("key press before clear\n");
-	//tmp = p->img;
-	//p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
 	mlx_clear_window(p->mlx, p->win);
 	printf("key press before put\n");
-	mlx_put_image_to_window(p->mlx, p->win, p->img, x, y);
+	draw(p);
+	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	return (0);
 }
 
