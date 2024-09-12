@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 16:10:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:00:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ZOOM_OUT_FACTOR 1.3
 # define JULIA_CX -0.17
 # define JULIA_CY 0.66
+# define K_VALUE -0.1
 # include <stdio.h>
 # include <unistd.h>
 # include <X11/X.h>
