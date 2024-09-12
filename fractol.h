@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 23:19:18 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 23:35:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,5 @@ int		close_window(t_box *p);
 int		loop_hook(t_box *p);
 int		mandelbrot(t_box *p);
 int		julia(t_box *p);
+int		burning_ship(t_box *p);
 #endif //FRACTOL_H

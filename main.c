@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 23:19:27 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 23:40:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	set_fractal(t_box *p, char *av[])
 		p->set = 'm';
 	else if(av[1][0] == 'j')
 		p->set = 'j';
+	else if(av[1][0] == 'b')
+		p->set = 'b';
 	else
 		return ;
 }
@@ -36,12 +38,12 @@ int	check_arg(int ac, char *av[], t_box *p)
 		error_julia();
 		return (0);
 	}
-	else if (av[1][0] == 'm' && ac != 2)
+	else if ((av[1][0] == 'm' || av[1][0] == 'b') && ac != 2)
 	{
 		error_fractal();
 		return (0);
 	}
-	else if (!(av[1][0] == 'm' || av[1][0] == 'j'))
+	else if (!(av[1][0] == 'm' || av[1][0] == 'j' || av[1][0] == 'b'))
 	{
 		error_fractal();
 		return (0);

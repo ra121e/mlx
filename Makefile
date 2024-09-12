@@ -6,14 +6,14 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 19:45:09 by athonda           #+#    #+#              #
-#    Updated: 2024/09/11 19:47:13 by athonda          ###   ########.fr        #
+#    Updated: 2024/09/12 23:39:38 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 
 SRCS	=	main.c error.c ft_atof.c init.c finish.c event.c draw.c \
-			fractal.c mandelbrot.c julia.c \
+			fractal.c mandelbrot.c julia.c burning_ship.c\
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
