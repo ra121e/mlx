@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 19:05:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 21:39:49 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	key_esc(int key, t_box *p)
 	if (key==0xFF1B)
 		finish(p, 1);
 	else if (key == 65361)
-		p->orig_x -= 10;
+		p->orig_x -= 20;
 	else if (key == 65363)
-		p->orig_x += 10;
+		p->orig_x += 20;
 	else if (key == 65362)
-		p->orig_y -= 10;
+		p->orig_y -= 20;
 	else if (key == 65364)
-		p->orig_y += 10;
+		p->orig_y += 20;
 	init_again(p);
 	printf("key press before clear\n");
 	mlx_clear_window(p->mlx, p->win);
