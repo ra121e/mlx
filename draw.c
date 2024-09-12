@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:59:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 22:20:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 23:10:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,28 @@ int	color(t_box *p, int n)
 	return (rgb);
 }
 
+void	put_color(t_box *p, int n)
+{
+	int	offset;
+
+	if (n < p->iter + ITER_UNIT)
+	{
+		p->div[p->x][p->y] = 1;
+		offset = p->y * p->line_size + (p->x * p->bits_per_pixel / 8);
+		*(int *)(p->addr + offset) = color(p, n);
+	}
+	else
+	{
+		offset = p->y * p->line_size + (p->x * p->bits_per_pixel / 8);
+		*(int *)(p->addr + offset) = (128 << 24) | 0x00ff0000;
+	}
+
+}
+
 void	draw(t_box *p)
 {
 	int		x;
 	int		y;
-	int		offset;
 	int		n;
 
 	x = -1;
@@ -48,17 +65,7 @@ void	draw(t_box *p)
 			p->x = x;
 			p->y = y;
 			n = fractal(p);
-			if (n < p->iter + ITER_UNIT)
-			{
-				p->div[x][y] = 1;
-				offset = y * p->line_size + (x * p->bits_per_pixel / 8);
-				*(int *)(p->addr + offset) = color(p, n);
-			}
-			else
-			{
-				offset = y * p->line_size + (x * p->bits_per_pixel / 8);
-				*(int *)(p->addr + offset) = (128 << 24) | 0x00ff0000;
-			}
+			put_color(p, n);
 		}
 	}
 	p->iter = p->iter + ITER_UNIT;
