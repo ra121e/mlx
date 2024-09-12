@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/11 14:29:36 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:10:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	init_again(t_box *p);
 void	finish(t_box *p, int exit_code);
 double	fractal(t_box *p);
 void	draw(t_box *p);
+int		color(t_box *p, int n);
 int		mouse_zoom(int button,int x,int y, t_box *p);
 int		key_esc(int key, t_box *p);
 int		close_window(t_box *p);
