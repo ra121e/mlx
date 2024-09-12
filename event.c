@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 21:39:49 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:40:54 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,29 @@ int	close_window(t_box *p)
 {
 	printf("close window\n");
 	finish(p, 1);
+	return (0);
+}
+
+int	key_color(int key, t_box *p)
+{
+	if (key == 32)
+	{
+		p->red = 255;
+		p->green = 255;
+		p->blue = 255;
+	}
+	else if (key == 98)
+	{
+		p->red = 64;
+		p->green = 64;
+		p->blue = 255;
+	}
+	else if (key == 103)
+	{
+		p->red = 64;
+		p->green = 255;
+		p->blue = 64;
+	}
 	return (0);
 }
 
@@ -45,7 +68,7 @@ int	mouse_zoom(int button,int x,int y, t_box *p)
 {
 	double	scale_factor;
 
-	printf("Mouse in Win1, button %d at %dx%d. p-value:%p\n",button,x,y,p);
+	printf("Mouse in Win1, button %d at %dx%d. zoom:%lf\n",button,x,y,1/p->scale_factor);
 	if (button == 4)
 		scale_factor = ZOOM_IN_FACTOR;
 	else if (button == 5)
@@ -57,17 +80,11 @@ int	mouse_zoom(int button,int x,int y, t_box *p)
 	p->orig_y = y - (y - p->orig_y) / scale_factor;
 	init_again(p);
 	printf("mouse zoom before loop hook\n");
-	//mlx_destroy_image(p->mlx, p->img);
-	//p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
-	//draw(p);
-	//mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	return (0);
 }
 
 int	loop_hook(t_box *p)
 {
-//	mlx_destroy_image(p->mlx, p->img);
-//	p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
 	printf("loop hook before draw: iter %d\n", p->iter);
 	fflush(stdout);
 	draw(p);

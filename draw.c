@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:59:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 22:04:21 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:20:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 int	color(t_box *p, int n)
 {
 	int		rgb;
-	int		color_nb;
+	int		red;
+	int		green;
+	int		blue;
 	double	scaled_n;
 
 	scaled_n = n / (1 + log(p->scale_factor) / log(0.7));
-	color_nb = (int)(255 * (1 - exp(K_VALUE * scaled_n)));
-	rgb = (color_nb << 16) + (color_nb << 8) + (color_nb);
+	red = (int)(p->red * (1 - exp(K_VALUE * scaled_n)));
+	green = (int)(p->green * (1 - exp(K_VALUE * scaled_n)));
+	blue = (int)(p->blue * (1 - exp(K_VALUE * scaled_n)));
+	rgb = (red << 16) + (green << 8) + (blue);
 	return (rgb);
 }
 

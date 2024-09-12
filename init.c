@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:54:21 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/11 14:15:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:18:52 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	init_var(t_box *p)
 	p->cx = 0.0;
 	p->cy = 0.0;
 	p->iter = 0;
+	p->red = 255;
+	p->green = 255;
+	p->blue = 255;
 	p->trigger = 0;
 }
 

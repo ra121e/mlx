@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 22:00:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:32:28 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ struct s_box
 	int		div[WIDTH][HEIGHT];
 	double	zr[WIDTH][HEIGHT];
 	double	zi[WIDTH][HEIGHT];
+	int		red;
+	int		green;
+	int		blue;
 	int		trigger;
 };
 
@@ -80,6 +83,7 @@ void	draw(t_box *p);
 int		color(t_box *p, int n);
 int		mouse_zoom(int button,int x,int y, t_box *p);
 int		key_esc(int key, t_box *p);
+int		key_color(int key, t_box *p);
 int		close_window(t_box *p);
 int		loop_hook(t_box *p);
 int		mandelbrot(t_box *p);
