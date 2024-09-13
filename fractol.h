@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 23:35:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:21:44 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ struct s_box
 	void	*win;
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
 	int		line_size;
 	int		endian;
 	char	set;
@@ -82,7 +82,7 @@ double	fractal(t_box *p);
 void	put_color(t_box *p, int n);
 int		color(t_box *p, int n);
 void	draw(t_box *p);
-int		mouse_zoom(int button,int x,int y, t_box *p);
+int		mouse_zoom(int button, int x, int y, t_box *p);
 int		key_esc(int key, t_box *p);
 int		close_window(t_box *p);
 int		loop_hook(t_box *p);

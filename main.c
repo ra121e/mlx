@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 23:40:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:19:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	set_fractal(t_box *p, char *av[])
 {
 	if (av[1][0] == 'm')
 		p->set = 'm';
-	else if(av[1][0] == 'j')
+	else if (av[1][0] == 'j')
 		p->set = 'j';
-	else if(av[1][0] == 'b')
+	else if (av[1][0] == 'b')
 		p->set = 'b';
 	else
 		return ;

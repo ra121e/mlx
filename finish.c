@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:23:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 22:49:51 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:05:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	finish(t_box *p, int exit_code)
 {
 	if (!p)
 		exit(exit_code);
+	if (p->mlx)
+		mlx_loop_end(p->mlx);
 	if (p->img)
 		mlx_destroy_image(p->mlx, p->img);
 	if (p->win)
 		mlx_destroy_window(p->mlx, p->win);
 	if (p->mlx)
 	{
-	//	mlx_loop_end(p->mlx);
 		mlx_destroy_display(p->mlx);
 		free(p->mlx);
 	}

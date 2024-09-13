@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:54:21 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/12 22:18:52 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:09:13 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_var(t_box *p)
 	p->win = NULL;
 	p->img = NULL;
 	p->addr = NULL;
-	p->bits_per_pixel = 0;
+	p->bpp = 0;
 	p->line_size = 0;
 	p->endian = 0;
 	p->set = '\0';
@@ -46,7 +46,7 @@ void	init(t_box *p)
 	p->mlx = mlx_init();
 	p->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "fractol");
 	p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
-	p->addr = mlx_get_data_addr(p->img, &p->bits_per_pixel, &p->line_size, &p->endian);
+	p->addr = mlx_get_data_addr(p->img, &p->bpp, &p->line_size, &p->endian);
 	p->scale_factor = 1.0;
 	p->orig_x = WIDTH * 2.0 / 3.0;
 	p->orig_y = HEIGHT / 2.0;

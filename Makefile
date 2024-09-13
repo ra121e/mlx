@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 19:45:09 by athonda           #+#    #+#              #
-#    Updated: 2024/09/12 23:39:38 by athonda          ###   ########.fr        #
+#    Updated: 2024/09/13 12:42:35 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ MLX_URL	= https://github.com/42Paris/minilibx-linux.git
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(LIBMLX)
+$(NAME): $(LIBFT) $(LIBMLX) $(OBJS)
 	cc $(CFLAGS) $(OBJS) $(LIBMLX) $(LIBFT) $(XFLAGS) -o $(NAME)
 
 $(LIBFT):
