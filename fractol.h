@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 13:21:44 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:42:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,10 @@ struct s_box
 	int		red;
 	int		green;
 	int		blue;
-	int		trigger;
 };
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-void	init_var(t_box *p);
-void	init(t_box *p);
 void	error_arg(void);
 void	error_julia(void);
 void	error_fractal(void);
@@ -74,7 +71,7 @@ int		ft_space_sign(char *str, int *sign);
 double	ft_atof(char *str);
 int		check_arg(int ac, char *av[], t_box *p);
 void	set_fractal(t_box *p, char *av[]);
-void	init(t_box *p);
+int		init(t_box *p);
 void	init_var(t_box *p);
 void	init_again(t_box *p);
 void	finish(t_box *p, int exit_code);

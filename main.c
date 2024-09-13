@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:47:30 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 13:19:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 13:40:17 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	main(int ac, char **av)
 	init_var(p);
 	if (check_arg(ac, av, p) == 0)
 		finish(p, 1);
-	init(p);
+	if (init(p) == 1)
+		finish(p, 1);
 	draw(p);
 	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	mlx_mouse_hook(p->win, mouse_zoom, p);
