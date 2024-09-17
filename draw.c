@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:59:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 13:18:42 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:03:01 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	color(t_box *p, int n)
 	double	scaled_n;
 
 	scaled_n = n / (1 + log(p->scale_factor) / log(0.7));
-	red = (int)(p->red * (1 - exp(K_VALUE * scaled_n)));
-	green = (int)(p->green * (1 - exp(K_VALUE * scaled_n)));
-	blue = (int)(p->blue * (1 - exp(K_VALUE * scaled_n)));
+	red = (int)(p->red * (1 - exp(p->red_k * scaled_n)));
+	green = (int)(p->green * (1 - exp(p->green_k * scaled_n)));
+	blue = (int)(p->blue * (1 - exp(p->blue_k * scaled_n)));
 	rgb = (red << 16) + (green << 8) + (blue);
 	return (rgb);
 }
@@ -41,7 +41,7 @@ void	put_color(t_box *p, int n)
 	else
 	{
 		offset = p->y * p->line_size + (p->x * p->bpp / 8);
-		*(int *)(p->addr + offset) = (128 << 24) | 0x00ff0000;
+		*(int *)(p->addr + offset) = (128 << 24) | 0x00000000;
 	}
 }
 

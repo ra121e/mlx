@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:54:21 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 15:13:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:02:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	init_var(t_box *p)
 	p->red = 255;
 	p->green = 255;
 	p->blue = 255;
+	p->red_k = -0.02;
+	p->green_k = -0.13;
+	p->blue_k = -0.13;
 }
 
 /**

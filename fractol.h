@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/17 11:46:01 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:00:38 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ struct s_box
 	int		red;
 	int		green;
 	int		blue;
+	double	red_k;
+	double	green_k;
+	double	blue_k;
 };
 
 void	ft_putchar_fd(char c, int fd);

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/17 13:59:18 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 23:19:32 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,27 @@ int	key_esc(int key, t_box *p)
 		finish(p, 1);
 	if (key == 32)
 	{
-		p->red = 255;
-		p->green = 255;
-		p->blue = 255;
+		p->red_k = -0.02;
+		p->green_k = -0.13;
+		p->blue_k = -0.13;
 	}
 	else if (key == 98)
 	{
-		p->red = 64;
-		p->green = 64;
-		p->blue = 200;
+		p->red_k = -0.02;
+		p->green_k = -0.08;
+		p->blue_k = -0.13;
+	}
+	else if (key == 103)
+	{
+		p->red_k = -0.13;
+		p->green_k = -0.13;
+		p->blue_k = -0.02;
+	}
+	else if (key == 114)
+	{
+		p->red_k = -0.13;
+		p->green_k = -0.02;
+		p->blue_k = -0.04;
 	}
 	else if (key == 65361)
 		p->orig_x += 20;
