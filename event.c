@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:53:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 12:46:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 13:59:18 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	key_esc(int key, t_box *p)
 		p->blue = 200;
 	}
 	else if (key == 65361)
-		p->orig_x -= 20;
-	else if (key == 65363)
 		p->orig_x += 20;
+	else if (key == 65363)
+		p->orig_x -= 20;
 	else if (key == 65362)
-		p->orig_y -= 20;
-	else if (key == 65364)
 		p->orig_y += 20;
+	else if (key == 65364)
+		p->orig_y -= 20;
 	init_again(p);
 	return (0);
 }
@@ -65,7 +65,11 @@ int	mouse_zoom(int button, int x, int y, t_box *p)
 
 int	loop_hook(t_box *p)
 {
+	char	buffer[256];
+
+	ft_dtoa((1 / p->scale_factor), buffer, 6);
 	draw(p);
 	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
+	mlx_string_put(p->mlx, p->win, (WIDTH / 2) - 20, 700 ,0x0067c0, buffer);
 	return (0);
 }

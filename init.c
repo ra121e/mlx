@@ -6,11 +6,21 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:54:21 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 13:43:19 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/13 15:13:32 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init.c
+ * @brief Initialization struct and mlx instance
+ */
+
 #include "fractol.h"
+
+/**
+ * @fn void	int_var(t_box *p)
+ * @brief initialize struct members
+ */
 
 void	init_var(t_box *p)
 {
@@ -37,6 +47,12 @@ void	init_var(t_box *p)
 	p->blue = 255;
 }
 
+/**
+ * @fn int	init(t_box *p)
+ * @brief start mlx instances as mlx, window, image and set init value
+ * @note for norm reason, zi zr div arrays are initilized in init_again
+ */
+
 int	init(t_box *p)
 {
 	p->mlx = mlx_init();
@@ -58,6 +74,11 @@ int	init(t_box *p)
 	init_again(p);
 	return (0);
 }
+
+/**
+ * @fn init_again
+ * @brief initialize the zr zi div for recurrence at event happen
+ */
 
 void	init_again(t_box *p)
 {

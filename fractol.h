@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:06:47 by athonda           #+#    #+#             */
-/*   Updated: 2024/09/13 13:42:10 by athonda          ###   ########.fr       */
+/*   Updated: 2024/09/17 11:46:01 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		ft_isdigit(int c);
 int		ft_isspace(char c);
 int		ft_space_sign(char *str, int *sign);
 double	ft_atof(char *str);
+char	ft_dtoa(double nb, char *buffer, int precision);
 int		check_arg(int ac, char *av[], t_box *p);
 void	set_fractal(t_box *p, char *av[]);
 int		init(t_box *p);
